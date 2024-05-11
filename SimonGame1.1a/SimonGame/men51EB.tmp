@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://jdnw27mqvc40"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_uoejg"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uoejg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 653.0
+color = Color(0.15072, 0.29856, 0.386205, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 402.0
+offset_top = 377.0
+offset_right = 760.0
+offset_bottom = 549.0
+theme_override_font_sizes/font_size = 64
+text = "JOGAR"
+
+[node name="titleOne" type="Label" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 22.0
+offset_right = 796.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 128
+text = "SIMON"
+
+[node name="subtitleRef" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.447
+anchor_top = 0.259
+anchor_right = 0.719
+anchor_bottom = 0.498
+offset_left = 175.056
+offset_top = 18.168
+offset_right = 174.712
+offset_bottom = 18.296
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.636787, 0.000301491, 0.636783, 0)
+
+[node name="subS" type="Label" parent="subtitleRef"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -99.5
+offset_right = -102.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.359332, 0.557774, 1, 1)
+theme_override_font_sizes/font_size = 128
+text = "s"
+
+[node name="subA" type="Label" parent="subtitleRef"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -101.0
+offset_right = -26.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.756863, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "a"
+
+[node name="subY" type="Label" parent="subtitleRef"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -102.0
+offset_right = 43.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.72549, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "y"
+
+[node name="subS2" type="Label" parent="subtitleRef"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -99.0
+offset_right = 106.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.980068, 0.877041, 2.31028e-06, 1)
+theme_override_font_sizes/font_size = 128
+text = "s"
+
+[node name="subtitleTimer" type="Timer" parent="subtitleRef"]
+wait_time = 1.5
+autostart = true
+
+[connection signal="pressed" from="Button" to="." method="_on_menu_button_pressed"]
+[connection signal="timeout" from="subtitleRef/subtitleTimer" to="." method="_on_subtitle_timer_timeout"]

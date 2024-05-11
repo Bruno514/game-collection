@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://2m1h2thc0nhj"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_d1ik0"]
+[ext_resource type="PackedScene" uid="uid://jdnw27mqvc40" path="res://menu.tscn" id="1_krp7w"]
+[ext_resource type="PackedScene" uid="uid://dcjtfmwb763bs" path="res://jogo.tscn" id="2_oy1uk"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_d1ik0")
+
+[node name="Menu" parent="." instance=ExtResource("1_krp7w")]
+
+[node name="Jogo" parent="." instance=ExtResource("2_oy1uk")]
+visible = false
+position = Vector2(-1129, -630)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(27, 12)
+zoom = Vector2(0.5, 0.5)
+
+[connection signal="StartGame" from="Menu" to="Jogo" method="gameCycle"]

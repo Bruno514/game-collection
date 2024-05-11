@@ -18,19 +18,11 @@ var ordemDoJogo = []
 
 var currentInSequence = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func addToSequence():
 	var nColor = cores.pick_random()
 	ordemDoJogo.append(nColor)
 	return nColor
+
 
 func gameCycle():
 	print("novo ciclo eba")
@@ -39,12 +31,9 @@ func gameCycle():
 	jogando = true
 	addToSequence()
 	highlightSequence()
-	await get_tree().create_timer(len(ordemDoJogo) - 0.2).timeout
 	print("pode jogar")
 	currentInSequence = 0
-	vezDeJogar = true
 
-	
 
 func highlightSequence():
 	vezDeJogar = false
@@ -67,14 +56,11 @@ func _on_game_button_pressed(btnColor):
 		botaoAtual.get_child(0).color = highlighted[botaoAtual]
 		await get_tree().create_timer(0.1).timeout
 		botaoAtual.get_child(0).color = btnColor
-		
-		
+
 		if btnColor == ordemDoJogo[currentInSequence]:
 			currentInSequence += 1
 			if !(currentInSequence >= len(ordemDoJogo)):
 				print("acertouuu boa")
-				
-				
 			else:
 				print("acabou a sequencia")
 				vezDeJogar = false
@@ -85,7 +71,8 @@ func _on_game_button_pressed(btnColor):
 			jogando = false
 			gameBlocker.visible = true
 			var tween1 = get_tree().create_tween()
-			tween1.tween_property(gameBlocker.get_child(1), "modulate", Color(1,1,1,0.9), 30)
+			tween1.tween_property(gameBlocker.get_child(1), "modulate", Color(1,1,1,1), 5)
+			tween1.connect("finished", on_madness_finished)
 			while true:
 				var tween = get_tree().create_tween()
 				tween.tween_property(gameBlocker.get_child(0), "rotation", 0.5, 1)
@@ -94,3 +81,6 @@ func _on_game_button_pressed(btnColor):
 				tween2.tween_property(gameBlocker.get_child(0), "rotation", -0.5, 1)
 				await get_tree().create_timer(1).timeout
 	
+func on_madness_finished():
+	get_tree().reload_current_scene()
+	print("JOGAR DE NOVO")

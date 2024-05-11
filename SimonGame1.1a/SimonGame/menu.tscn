@@ -75,7 +75,7 @@ texture = ExtResource("5_7fobl")
 expand_mode = 1
 
 [node name="subtitleTimer" type="Timer" parent="subtitleRef"]
-wait_time = 5.0
+wait_time = 5.1
 autostart = true
 
 [node name="TextureButton" type="TextureButton" parent="."]
